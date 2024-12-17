@@ -1,0 +1,8 @@
+body {
+    font-size: 14px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+:root {
+    --primary-color: #faceb1;
+}
