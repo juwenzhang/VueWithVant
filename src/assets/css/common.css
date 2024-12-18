@@ -1,8 +1,26 @@
+/* 设置通用样式 */
 body {
     font-size: 14px;
     font-family: "Courier New", Courier, monospace;
 }
 
+/* 配置全局变量 */
 :root {
     --primary-color: #faceb1;
+    --van-search-left-icon-color: var(--primary-color) !important;
+}
+
+
+/*
+如果想要有些页面通过 CSS 来实现我们的控制 tabBar 组件是否显示
+    直接添加样式类名宁 .tab-bar-hidden 即可
+这样的处理结果和我们的通过 JS 中的路由匹配 meta 数据配置，
+    以及通过状态管理库来进行管理是同理的
+*/
+.tab-bar-hidden {
+    position: relative;
+    z-index: 9;
+    background-color: white;
+    height: 100vh;
+    overflow-y: auto;
 }

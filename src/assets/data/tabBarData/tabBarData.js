@@ -14,7 +14,7 @@ const tabBarData = {
             path: "/favor"
         },
         {
-            title: "订单",
+            title: "个人博客",
             imgUrl: "../../assets/img/juejin.svg",
             status: "数据相应成功~~~~",
             path: "/order"
