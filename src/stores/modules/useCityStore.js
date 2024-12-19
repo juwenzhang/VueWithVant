@@ -1,9 +1,10 @@
-import { defineStore } from "pinia"
-import { city } from "../../services/index.js"
+import {defineStore} from "pinia"
+import {city} from "../../services/index.js"
 
 const useCityStore = defineStore("city", {
     state: () => ({
-        allCities: {}
+        allCities: {},
+        currentCity: {}
     }),
 
     getters: {
@@ -11,9 +12,12 @@ const useCityStore = defineStore("city", {
     },
 
     actions: {
-        async fetchAllCitiesDataAction() {
-            const res = await city.getAllCityData()
-            this.state.allCities = res
+        async fetchAllCitiesDataAction(state) {
+            try {
+                this.allCities = await city.getAllCityData()
+            } catch (error) {
+                console.error("Error fetching city data:", error)
+            }
         }
     }
 })

@@ -1,7 +1,8 @@
-const BASE_URL = "https://codercba.com:1888/api"
+const BASE_URL = "https://www.mxnzp.com/api"
 const TIMEOUT = 3000
 
-export {
-    BASE_URL,
-    TIMEOUT
+export const config = {
+    baseURL: BASE_URL,
+    timeout: TIMEOUT
 }
+

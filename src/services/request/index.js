@@ -1,20 +1,20 @@
 import axios from "axios"
-import { BASE_URL, TIMEOUT } from "./config.js"
+import { config } from "./config.js"
 
 // 开始封装我们的 axios 请求
 class JWZRequest{
     // 构造函数的实现
     constructor(baseUrl, timeout=10000) {
         this.instance = axios.create({
-            baseUrl,
-            timeout
+            baseURL: baseUrl,
+            timeout: timeout
         })
     }
 
     request(config) {
         return new Promise((resolve, reject) => {
             this.instance.request(config).then(res => {
-                resolve(res?.data)
+                resolve(res.data)
             }).catch(err => {
                 reject(err)
             })
@@ -26,9 +26,9 @@ class JWZRequest{
     }
 
     post(config) {
-        return this.request({ ...config, matched: "POST" })
+        return this.request({ ...config, method: "POST" })
     }
 }
 
-
-export default new JWZRequest(BASE_URL, TIMEOUT)
+const JWZRequestInstance = new JWZRequest(config.baseURL, config.timeout)
+export default JWZRequestInstance

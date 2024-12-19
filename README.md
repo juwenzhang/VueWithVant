@@ -12,6 +12,13 @@
   * common.css 自定义设置的公共样式
   * normalize.css  github开源直接下载或者 cv 即可
   * 并且使用在 main.js 中进行导入生效
+* 解决图片引入问题
+  * 就是使用我们的 URL 对象来实现的是我们的解决引入问题
+```javascript
+const getAssetImgURL = (imageUrl) => {
+    return new URL(imageUrl, import.meta.url).href
+}
+```
 
 ![](./public/item01.png)
 
@@ -60,6 +67,15 @@
 ### 开发思想
 * 通过配置路由 mate 信息来实现控制组件的显示
   * 然后结合获取激活状态的路由的 useRoute 来实现获取信息即可
+  * 或者说通过我们的样式设计来实现是一样的呐
 * 通过 geo api 来实现获取用户的位置信息
   * 获取得到的信息是我们的经纬度，同时数据传递给后端，后端返回信息
   * 然后我们渲染页面
+
+### 如何开发属于自己的组件库
+* 基础组件
+* 表单组件
+* 反馈组件
+* 展示组件
+* 导航组件
+* 业务组件

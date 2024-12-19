@@ -1,6 +1,6 @@
 <template>
   <div class="location">
-    <div class="city" @click="cityClick">北京(现居重庆)</div>
+    <div class="city" @click="cityClick">{{ showCityName }}</div>
     <div class="position" @click="positionClick">
       <div class="text">我的位置</div>
       <img src="../../../assets/img/img.png" alt="~">
@@ -10,6 +10,14 @@
 
 <script setup name="HomeLocation">
   import { useRouter } from "vue-router"
+  import useCityStore from "../../../stores/modules/useCityStore.js"
+
+  const cityStore = useCityStore()
+
+  // 由于后端接口原因，暂时当作字符串进行处理
+  const showCityName = Object.keys(cityStore.currentCity).length
+      ? cityStore.currentCity : "请选择城市"
+
   // 获取具体的城市信息
   const router = useRouter()
   const cityClick = () => {
