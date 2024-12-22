@@ -3,6 +3,7 @@
     <home-nav-bar></home-nav-bar>
     <home-banner></home-banner>
     <home-location></home-location>
+    <slider :imgList="imgList"></slider>
   </div>
 </template>
 
@@ -10,6 +11,12 @@
   import HomeNavBar from "./components/HomeNavBar.vue"
   import HomeBanner from "./components/HomeBanner.vue"
   import HomeLocation from "./components/HomeLocation.vue"
+  import Slider from "../../components/slider/Slider.vue"
+
+  const imgList = [
+    new URL("../../assets/img/slider01.jpg", import.meta.url).href,
+    new URL("../../assets/img/slider01.jpg", import.meta.url).href
+  ]
 </script>
 
 <style scoped lang="less">
