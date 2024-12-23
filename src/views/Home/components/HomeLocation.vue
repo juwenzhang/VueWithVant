@@ -15,7 +15,7 @@
   const cityStore = useCityStore()
 
   // 由于后端接口原因，暂时当作字符串进行处理
-  const showCityName = Object.keys(cityStore.currentCity).length
+  const showCityName = cityStore.currentCity
       ? cityStore.currentCity : "请选择城市"
 
   // 获取具体的城市信息

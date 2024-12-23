@@ -43,7 +43,6 @@
 
     if (item && underline) {
       const { offsetLeft } = item
-      console.log(offsetLeft)
       underlineStyle.value = {
         transform: `translateX(${offsetLeft}px)`
       }

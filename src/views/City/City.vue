@@ -1,5 +1,6 @@
 <template>
   <div class="city">
+
     <div class="top">
       <van-search
           v-model="searchValue"
@@ -10,8 +11,10 @@
           @cancel="cancel"
           background="#c0e2f6"
       />
-
-      <template v-if="typeof allCities !== 'object'">
+      <city-group :allCities="allCities"
+                  :activeName="activeName">
+      </city-group>
+      <template v-if="Object.keys(allCities).length === 2">
         <van-tabs v-model:active="activeName"
                   color="#ff9854"
                   line-height="2px" sticky
@@ -20,6 +23,7 @@
           <van-tab title="海外" name="b"></van-tab>
         </van-tabs>
       </template>
+
       <template v-else>
         <van-tabs v-model:active="activeName"
                   color="#ff9854"
@@ -33,11 +37,13 @@
       </template>
     </div>
 
+
     <div class="context">
-      <!-- 开始使用组件，并且传递数据过去 -->
-      <city-group :allCities="allCities"
-                  :activeName="activeName">
-      </city-group>
+      <div style="height: 700px">
+        <div v-for="item in 100">
+          第 {{ item }} 个数据
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -62,7 +68,7 @@
   const cityStore = useCityStore()
   cityStore.fetchAllCitiesDataAction()
   const { allCities } = storeToRefs(cityStore)
-  // console.log(allCities)
+  console.log(allCities)
 
   // 定义变量进行标记我们的选择
   // const currentCityGroup = computed(() => allCities.value[activeName.value])
@@ -79,7 +85,7 @@
     //}
     //
     //.context {
-    //
+    //  margin-top: 100px;
     //}
     // 开始局部滚动
     。top {

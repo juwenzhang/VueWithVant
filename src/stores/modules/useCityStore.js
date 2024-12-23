@@ -4,7 +4,7 @@ import {city} from "../../services/index.js"
 const useCityStore = defineStore("city", {
     state: () => ({
         allCities: {},
-        currentCity: {}
+        currentCity: ""
     }),
 
     getters: {

@@ -1,7 +1,7 @@
 <template>
   <div class="city-group">
     <!-- 开始使用我们的组件库来完成我们的业务逻辑 -->
-    <van-index-bar> <!--:index-list="indexList"-->
+    <van-index-bar> <!--:index-list="indexList" 开发的时候根据实际情况来拼接我们的索引展示，后端返回分组数据-->
       <van-index-anchor index="热门城市"></van-index-anchor>
       <div class="city">
         <template v-for="(city, index) in cities" :key="index">
@@ -52,7 +52,7 @@
   })
 
   // 计算属性部分
-  const cities = ["重庆", "北京", "天津", "上海"]
+  const cities = ["重庆", "北京", "天津", "上海", "四川"]
   const indexList = computed(() => {
     // const list = props.allCities[props.activeName]?.cities.map(item => item.group)
     // if (list) {
@@ -65,7 +65,6 @@
   const router = useRouter()
   const cityStore = useCityStore()
   const cityClick = (cityName) => {
-    // console.log(cityName)
     // 为了其他的地方可以使用得到我们的数据变化，我们就需要做的是
     // 进行数据传递： 事件总线实现数据共享，或者说 store 实现数据共享
     cityStore.currentCity = cityName
@@ -77,7 +76,9 @@
   // 开始我们的 flex 布局
   .city {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start; /* 修改为flex-start*/
+    align-content: center;
+    flex-wrap: wrap;
     padding: 10px 25px 10px 10px;
 
     .title {
@@ -86,8 +87,10 @@
       background-color: #fcc66655;
       border-radius: 14px;
       font-size: 12px;
-      text-align: center;
-      line-height: 28px;
+      display: flex;
+      align-items: center; /* 垂直居中内容 */
+      justify-content: center; /* 水平居中内容 */
+      margin: 5px 15px 5px 0; /* 调整间距 */
     }
   }
 </style>

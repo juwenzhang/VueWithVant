@@ -1,6 +1,5 @@
 <template>
   <div class="banner">
-    <img src="../../../assets/img/img.svg" alt="">
   </div>
 </template>
 
@@ -10,9 +9,8 @@
 
 <style scoped lang="less">
   .banner {
-    background-color: #21144d;
-    img {
-      margin-top: -6rem
-    }
+    width: 100%;
+    height: 150px;
+    background: #21144d url("../../../assets/img/img.svg") no-repeat fixed;
   }
 </style>
