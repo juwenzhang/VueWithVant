@@ -4,7 +4,7 @@
       <span class="action">入住时间</span>
       <span class="date">{{ start_time }}</span>
     </div>
-    <div class="stay">{{ show_desc }}</div>
+    <div class="stay">{{ show_info }}</div>
     <div class="end" @click="dateClick">
       <span class="action">离开时间</span>
       <span class="date">{{ end_time }}</span>
@@ -23,27 +23,38 @@
 <script setup name="HomeDate">
   import { ref, computed } from "vue"
   import { formatData, getDiffDays } from "../../../utils/formate_data.js"
+  import useCityStore from "../../../stores/modules/useCityStore.js"
+
 
   const calenderIsShow = ref(false)
+  const cityStore = useCityStore()
 
-  // 开始实现设置我们的日期
-  const start_time = ref(formatData(new Date()))
-  const end_time = ref(formatData(new Date().getTime()))
-  const long_time = ref(0)
 
-  const show_desc = computed(() => {
-    return long_time.value === 0 ? "暂住待定": `共${long_time.value}天`
+  let start_time = cityStore.start_time === "" ? formatData(new Date()) : cityStore.start_time
+  let end_time = cityStore.end_time === "" ? formatData(new Date()) : cityStore.end_time
+
+
+  const long_time = ref()
+  long_time.value = cityStore.long_time
+  const show_info = computed(() => {
+    return cityStore.long_time === 0 ? "暂定" : `持续${long_time.value}天`
   })
+
 
   const dateClick = () => {
     calenderIsShow.value = true
   }
 
+
   const onConfirm = (calender_arr) => {
-    start_time.value = formatData(calender_arr[0])
-    end_time.value = formatData(calender_arr[1])
+    start_time = formatData(calender_arr[0])
+    end_time = formatData(calender_arr[1])
     long_time.value = getDiffDays(calender_arr[0], calender_arr[1])
+    cityStore.long_time = long_time.value
     calenderIsShow.value = false
+
+    cityStore.start_time = start_time
+    cityStore.end_time = end_time
   }
 </script>
 

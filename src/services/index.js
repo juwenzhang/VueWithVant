@@ -1,1 +1,6 @@
 export * as city from "./modules/city.js"
+export * as home from "./modules/home.js"
+export * as order from "./modules/order.js"
+export * as message from "./modules/message.js"
+export * as search from "./modules/search.js"
+export * as favor from "./modules/favor.js"

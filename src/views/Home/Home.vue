@@ -5,6 +5,8 @@
     <home-location></home-location>
     <slider :imgList="imgList"></slider>
     <home-date></home-date>
+    <home-search-btn></home-search-btn>
+    <home-category></home-category>
   </div>
 </template>
 
@@ -14,11 +16,14 @@
   import HomeLocation from "./components/HomeLocation.vue"
   import Slider from "../../components/slider/Slider.vue"
   import HomeDate from "./components/HomeDate.vue"
+  import HomeSearchBtn from "./components/HomeSearchBtn.vue"
+  import HomeCategory from "./components/HomeCategory.vue"
 
   const imgList = [
     new URL("../../assets/img/slider01.jpg", import.meta.url).href,
     new URL("../../assets/img/slider01.jpg", import.meta.url).href
   ]
+
 </script>
 
 <style scoped lang="less">

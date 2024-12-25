@@ -1,7 +1,8 @@
 import { defineStore } from "pinia"
-import { message } from "../../services/index.js"
+import { search } from "../../services/index.js"
 
-const useMessageStore = defineStore("message", {
+
+const useSearchStore = defineStore("search", {
     state: () => {
         {
 
@@ -17,4 +18,4 @@ const useMessageStore = defineStore("message", {
     }
 })
 
-export default useMessageStore
+export default useSearchStore

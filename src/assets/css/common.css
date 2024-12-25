@@ -8,8 +8,8 @@ body {
 :root {
     --primary-color: #faceb1;
     --van-search-left-icon-color: var(--primary-color) !important;
+    --linear-btn-color-home: linear-gradient(90deg, #fa8c1d, #fcaf3f);
 }
-
 
 /*
 如果想要有些页面通过 CSS 来实现我们的控制 tabBar 组件是否显示

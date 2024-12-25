@@ -4,7 +4,10 @@ import {city} from "../../services/index.js"
 const useCityStore = defineStore("city", {
     state: () => ({
         allCities: {},
-        currentCity: ""
+        currentCity: "",
+        start_time: "",
+        end_time: "",
+        long_time: 0
     }),
 
     getters: {

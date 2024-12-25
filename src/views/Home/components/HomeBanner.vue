@@ -9,8 +9,10 @@
 
 <style scoped lang="less">
   .banner {
+    aspect-ratio: 1/1;
     width: 100%;
-    height: 150px;
-    background: #21144d url("../../../assets/img/img.svg") no-repeat fixed;
+    height: 25vh;
+    background:#21144d url("../../../assets/img/img.svg") center no-repeat local;
+    background-size: 100vw 100vh;
   }
 </style>
