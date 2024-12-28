@@ -16,6 +16,7 @@ class JWZRequest{
             this.instance.request(config).then(res => {
                 resolve(res.data)
             }).catch(err => {
+                console.log("服务端接口有问题~~~")
                 reject(err)
             })
         })

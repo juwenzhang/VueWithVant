@@ -4,7 +4,9 @@ import { home } from "../../services/index.js"
 const useHomeStore = defineStore("home", {
     state: () => ({
         hotSuggestData: [],
-        categories: []
+        categories: [],
+        homeList: [],
+        currentPage: 0
     }),
 
     getters: {
@@ -20,6 +22,12 @@ const useHomeStore = defineStore("home", {
         async fetchCategoriesData(){
             const res = await home.getCategoriesData()
             this.categories = res?.data
+        },
+
+        async fetchHomeListData() {
+            const res = await home.getHomeListData(this.currentPage)
+            this.currentPage += 1
+            this?.homeList.push(...res.data)  // 尽量解构，否则是二维数组
         }
     }
 })

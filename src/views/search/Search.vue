@@ -13,7 +13,7 @@
     router.back()
   }
   const { currentCity, start_time, end_time, long_time } = route.query  // 实现获取我们的传递的数据
-  console.log(currentCity, start_time, end_time, long_time)
+  // console.log(currentCity, start_time, end_time, long_time)
 </script>
 
 <style scoped lang="less">
