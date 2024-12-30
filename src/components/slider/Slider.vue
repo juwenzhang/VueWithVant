@@ -31,18 +31,26 @@ import { ref, onMounted, onUnmounted } from "vue"
   // 设置激活下标是 currentIndex
   const currentIndex = ref(0)
   const imgRef = ref()
+  let intervalId = null
 
   function iterClick(index) {
     currentIndex.value = index
     imgRef.value.style.transform = `translateX(${-index}00%)`
+    resetAutoPlay()
   }
 
   function autoPlay() {
     currentIndex.value = (currentIndex.value + 1) % imgList.length;
     imgRef.value.style.transform = `translateX(${-currentIndex.value * 100}%)`;
   }
+
+  // 开始实现重置自动播放
+  function resetAutoPlay() {
+    clearInterval(intervalId)
+    intervalId = setInterval(autoPlay, 3000)
+  }
+
   // 启动自动播放
-  let intervalId;
   onMounted(() => {
     intervalId = setInterval(autoPlay, 3000)
   });

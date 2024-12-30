@@ -13,11 +13,16 @@
 
 <script name="HomeContentList" setup>
   import { watch } from "vue"
-  import { useScroll } from "../../../hooks/index.js"
   import useHomeStore from "../../../stores/modules/useHomeStore.js";
 
-  const { reachBottom } = useScroll()
   const homeStore = useHomeStore()
+
+  const reachBottom = defineProps({
+    reachBottom: {
+      type: Boolean,
+      default: false
+    }
+  })
 
   watch(reachBottom, (newValue) => {
     if(newValue) {

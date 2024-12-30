@@ -1,5 +1,10 @@
-import useListenerHook from "./modules/useListenerHook.js"
+import useWindowListenerHook from "./modules/useWindowListenerHook.js"
+import useElementScrollListenerHook from "./modules/useElementListenerHook.js"
 
 export function useScroll() {
-    return { ...useListenerHook(document.documentElement, window, "scroll") }
+    return { ...useWindowListenerHook(document.documentElement, window, "scroll") }
+}
+
+export function useElementScroll(ele) {
+    return { ...useElementScrollListenerHook(ele) }
 }

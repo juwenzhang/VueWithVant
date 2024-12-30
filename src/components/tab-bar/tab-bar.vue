@@ -11,13 +11,14 @@
 </template>
 
 <script setup name="tab-bar">
-  import { useRouter } from "vue-router"
+  import { useRouter, useRoute } from "vue-router"
   import {ref} from "vue"
   import tabBarData from "../../assets/data/tabBarData/tabBarData.js"
 
   // 定义函数实现路由跳转函数，并且修改激活按钮选中
   const currentIndex = ref(0)
   const router = useRouter()  // 获取路由器对象
+
   const toViewPage = (routePath, index) => {
     router.push(routePath)
     currentIndex.value = index

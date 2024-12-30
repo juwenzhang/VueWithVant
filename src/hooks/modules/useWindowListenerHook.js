@@ -8,8 +8,8 @@ import { JWZ_throttle } from "../../utils/JWZ_throttle.js"
  * @param { HTMLElement } listenerEle
  * @param { String } action
  */
-export default function useListenerHook(listenerEle, listenerObj= window ,
-                                        action = "scroll") {
+export default function useWindowListenerHook(listenerEle, listenerObj= window ,
+                                              action = "scroll") {
     const scrollTop = ref(0)
     const scrollHeight = ref(0)
     const clientHeight = ref(0)
@@ -29,16 +29,23 @@ export default function useListenerHook(listenerEle, listenerObj= window ,
         listenerObj.addEventListener(action, Listener)
     })
 
-    onActivated(() => {
-        listenerObj.addEventListener(action, Listener)
-    })
-
     onUnmounted(() => {
         listenerObj.removeEventListener(action, Listener)
     })
 
+    onActivated(() => {
+        if (listenerEle) {
+            listenerEle.addEventListener(action, Listener)
+            listenerEle.scrollTo({
+                top: scrollTop.value
+            })
+        }
+    })
+
     onDeactivated(() => {
-        listenerObj.removeEventListener(action, Listener)
+        if (listenerEle) {
+            listenerEle.removeEventListener(action, Listener)
+        }
     })
 
     return {

@@ -9,14 +9,17 @@
 </template>
 
 <script setup name="HomeLocation">
+  import { computed } from "vue"
   import { useRouter } from "vue-router"
   import useCityStore from "../../../stores/modules/useCityStore.js"
 
   const cityStore = useCityStore()
 
   // 由于后端接口原因，暂时当作字符串进行处理
-  const showCityName = cityStore.currentCity
-      ? cityStore.currentCity : "请选择城市"
+  const showCityName = computed(() => {
+    return cityStore.currentCity !== ""
+        ? cityStore.currentCity : "请选择城市"
+  })
 
   // 获取具体的城市信息
   const router = useRouter()
