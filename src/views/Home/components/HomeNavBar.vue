@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <div class="title">JUWENZHANG</div>
+    <div class="title" v-unit>JUWENZHANG</div>
   </div>
 </template>
 

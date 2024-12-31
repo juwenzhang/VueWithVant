@@ -24,6 +24,33 @@
 <!--  </loading>-->
 </template>
 
+<!-- 开始实现自定义指令 -->
+<script>
+  // option api 的书写
+  export default {
+    directives: {
+      focus: {
+        // 生命周期函数
+        mounted(el) {  // 表示的是我们的自定义指令运用的元素被挂载后的生命周期函数
+          el?.focus()
+        }
+      }
+    },
+    setup(props, { emit }) {
+      // 在组合式 api 中的自定义指令的话需要进行的是直接命名我们的指令即可
+      // 指令命名格式 vFocus v后面的字母必须大写
+      const vFocus = {
+        mounted(el) {
+          el?.focus()
+        }
+      }
+      return {
+        vFocus
+      }
+    }
+  }
+</script>
+
 <script setup name="Home">
   import HomeNavBar from "./components/HomeNavBar.vue"
   import HomeBanner from "./components/HomeBanner.vue"
