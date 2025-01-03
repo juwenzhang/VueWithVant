@@ -4,6 +4,7 @@ export default function directiveFormatTime(app) {
     app.directive("format-time", {
         mounted(el, binding) {
             let timeContent = el.textContent
+            timeContent = Number(timeContent)
             if (timeContent.length === 10) timeContent = timeContent * 1000
 
             // 开始实现获取我们的 value
